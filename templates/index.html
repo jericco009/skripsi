@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}Monitoring Reaksi Pelanggan{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="text-center">
+            <img src="{{ url_for('static', filename='depan.webp') }}" alt="Gambar Depan" style="width:500px;border:1px solid black">
+        </div>
+        
+        <h2 class="text-center" style="margin-top: 30px;margin-bottom: 30px;">Implementasi Algoritma Convolutional Neural Network (CNN) dengan Optimizer Adam dalam Monitoring Reaksi Pelanggan</h2>
+        
+        <p>
+            Sistem ini mengimplementasikan **Convolutional Neural Network (CNN)** untuk mendeteksi dan menganalisis ekspresi wajah pelanggan. 
+            Proses ini memungkinkan sistem untuk memahami reaksi pelanggan dan memberikan feedback atau keputusan berdasarkan emosi yang terdeteksi.
+        </p>
+
+        <h4>1. Pengumpulan Data</h4>
+        <p>
+            Data gambar yang menunjukkan ekspresi wajah pelanggan dikumpulkan. Data ini bisa berupa foto atau video yang diambil dari pelanggan 
+            dalam waktu nyata atau dapat juga menggunakan dataset wajah yang sudah ada.
+        </p>
+
+        <h4>2. Preprocessing Gambar</h4>
+        <p>
+            Setelah data terkumpul, gambar tersebut akan diproses agar sesuai dengan model CNN. Proses ini mencakup:
+        </p>
+        <ul>
+            <li><strong>Resize</strong>: Mengubah ukuran gambar agar sesuai dengan ukuran input model CNN.</li>
+            <li><strong>Normalisasi</strong>: Menyesuaikan nilai piksel gambar sehingga berada dalam rentang yang sesuai, seperti antara 0 dan 1.</li>
+            <li><strong>Augmentasi Gambar</strong>: Proses seperti rotasi, pemotongan, atau pergeseran gambar untuk meningkatkan keberagaman data pelatihan.</li>
+        </ul>
+
+        <h4>3. Penerapan CNN</h4>
+        <p>
+            Sistem ini menggunakan arsitektur CNN untuk mengekstrak fitur penting dari gambar ekspresi wajah pelanggan. Langkah-langkahnya adalah:
+        </p>
+        <ul>
+            <li><strong>Convolutional Layers</strong>: Lapisan konvolusi digunakan untuk mengekstrak fitur seperti tepi, tekstur, dan pola.</li>
+            <li><strong>Activation Function</strong>: Fungsi aktivasi seperti ReLU digunakan untuk memperkenalkan non-linearitas ke dalam model.</li>
+            <li><strong>Pooling Layers</strong>: Proses pooling digunakan untuk mereduksi dimensi gambar dan memfokuskan model pada fitur yang lebih penting.</li>
+            <li><strong>Fully Connected Layers</strong>: Setelah ekstraksi fitur, lapisan fully connected digunakan untuk menghubungkan fitur-fitur tersebut dan menghasilkan output akhir.</li>
+        </ul>
+
+        <h4>4. Optimizer: Adam</h4>
+        <p>
+            Optimizer **Adam** (Adaptive Moment Estimation) digunakan untuk memperbarui bobot model selama pelatihan. 
+            Adam menggabungkan keuntungan dari dua optimizer lainnya, yaitu **Momentum** dan **RMSprop**, sehingga dapat mengatasi masalah gradien yang tidak stabil dan mempercepat konvergensi model. 
+            Dengan menggunakan Adam, sistem dapat melakukan pelatihan yang lebih cepat dan stabil, bahkan untuk dataset yang besar.
+        </p>
+
+        <h4>5. Evaluasi Kepuasan Pelanggan</h4>
+        <p>
+            Setelah model berhasil dilatih dan diimplementasikan, sistem menggunakan prediksi dari CNN untuk mendeteksi emosi pelanggan berdasarkan ekspresi wajah. 
+            Setiap deteksi akan dikaitkan dengan skor kepuasan pelanggan. Berdasarkan hasil prediksi, sistem dapat menilai apakah pelanggan merasa sangat puas, puas, cukup puas, kurang puas, atau tidak puas.
+        </p>
+
+        <h4>6. Hasil Visualisasi</h4>
+        <p>
+            Hasil deteksi ekspresi emosi akan divisualisasikan dalam bentuk grafik atau pie chart yang menggambarkan jumlah deteksi untuk setiap ekspresi emosi yang terdeteksi.
+        </p>
+
+    </div>
+{% endblock %}

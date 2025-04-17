@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Monitoring{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <img src="{{ url_for('video_feed') }}" width="100%" height="600" />
+        </div>
+        <div id="emotion-counts" class="col-md-2">
+            <h5>Detected Emotions:</h5>
+            <ul>
+                <li>Marah: <span id="Marah-count">0</span></li>
+                <li>Senang: <span id="Senang-count">0</span></li>
+                <li>Netral: <span id="Netral-count">0</span></li>
+                <li>Sedih: <span id="Sedih-count">0</span></li>
+                <li>Terkejut: <span id="Terkejut-count">0</span></li>
+            </ul>
+        </div>
+        <center style="padding-top:20px">
+            <button id="selesai-btn" class="btn btn-primary">Selesai</button>
+        </center>
+    </div>
+</div>
+
+<script>
+    // Fetch emotion counts periodically (every second)
+    function updateEmotionCounts() {
+        fetch('/get_emotion_count')
+            .then(response => response.json())
+            .then(data => {
+                // Update the emotion counts on the page
+                document.getElementById("Senang-count").textContent = data.emotion_count[3];
+                document.getElementById("Sedih-count").textContent = data.emotion_count[5];
+                document.getElementById("Marah-count").textContent = data.emotion_count[0];
+                document.getElementById("Netral-count").textContent = data.emotion_count[4];
+                document.getElementById("Terkejut-count").textContent = data.emotion_count[6];
+            });
+    }
+
+    // Update emotion counts every second
+    setInterval(updateEmotionCounts, 1000);
+
+    document.getElementById("selesai-btn").addEventListener("click", function() {
+        window.location.href = "/kesimpulan_reaksi"; // Mengarahkan ke halaman kesimpulan
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}Kesimpulan Reaksi{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <center>
+                <img src="{{ plot_url }}" alt="Grafik Ekspresi Emosi" style="width:100%" />
+            </center>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                <li>Marah: {{ emotion_count["Marah"] }} ({{ emotion_count["Marah"] / total_emotions * 100 }})</li>
+                <li>Senang: {{ emotion_count["Senang"] }} ({{ emotion_count["Senang"] / total_emotions * 100 }})</li>
+                <li>Netral: {{ emotion_count["Netral"] }} ({{ emotion_count["Netral"] / total_emotions * 100 }})</li>
+                <li>Sedih: {{ emotion_count["Sedih"] }} ({{ emotion_count["Sedih"] / total_emotions * 100 }})</li>
+                <li>Terkejut: {{ emotion_count["Terkejut"] }} ({{ emotion_count["Terkejut"] / total_emotions * 100 }})</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <h2>Kesimpulan:</h2>
+        <h4>Skor Kepuasan Pelanggan: {{ satisfaction_percentage }}%</h4>
+        <h4>Level Tingkat Kepuasan: {{ satisfaction_level }}</h4>
+    </div>
+
+</div>
+{% endblock %}

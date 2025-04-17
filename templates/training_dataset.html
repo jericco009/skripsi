@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Training Dataset{% endblock %}
+
+{% block content %}
+<div class="container">
+    <center>
+        <h1 class="my-4">Model Training Progress</h1>
+    </center>
+    <h2>Epoch Results</h2>
+    <table class="table table-bordered">
+        <thead style="background-color: skyblue;">
+            <tr>
+                <th>Epoch</th>
+                <th>Training Loss</th>
+                <th>Training Accuracy</th>
+                <th>Validation Loss</th>
+                <th>Validation Accuracy</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for epoch in epochs_data %}
+            <tr>
+                <td>{{ epoch.epoch }}</td>
+                <td>{{ epoch.train_loss | round(4) }}</td>
+                <td>{{ epoch.train_accuracy | round(4) }}</td>
+                <td>{{ epoch.val_loss | round(4) }}</td>
+                <td>{{ epoch.val_accuracy | round(4) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Training Accuracy and Loss Plot</h2>
+    <div class="text-center">
+        <img src="{{ plot_url }}" alt="Training Plot" class="img-fluid">
+    </div>
+</div> 
+{% endblock %}
